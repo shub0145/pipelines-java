@@ -1,0 +1,32 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+
+- task: SqlAzureDacpacDeployment@1
+  displayName: Execute Azure SQL - DacpacTask
+  inputs:
+    azureSubscription: '0d28ba3b-95e3-4548-a114-da3941d09d24'
+    ServerName: 'nestleserver-0145.database.windows.net'
+    DatabaseName: 'student'
+    SqlUsername: 'nestleserver-0145'
+    SqlPassword: 'Password7477@'
+    DacpacFile: $(Build.SourcesDirectory)
