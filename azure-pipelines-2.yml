@@ -4,7 +4,7 @@
     azureSubscription: 'Visual Studio Enterprise Subscription(0d28ba3b-95e3-4548-a114-da3941d09d24)'
     AuthenticationType: 'server'
     ServerName: 'nestleserver-0145.database.windows.net'
-    DatabaseName: 'student'
+    DatabaseName: 'newDB'
     SqlUsername: 'nestleserver-0145'
     SqlPassword: 'Password7477@'
     deployType: 'DacpacTask'
