@@ -1,4 +1,15 @@
 # Maven
+- task: SqlAzureDacpacDeployment@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription(0d28ba3b-95e3-4548-a114-da3941d09d24)'
+    AuthenticationType: 'server'
+    ServerName: 'nestleserver-0145.database.windows.net'
+    DatabaseName: 'student'
+    SqlUsername: 'nestleserver-0145'
+    SqlPassword: 'Password7477@'
+    deployType: 'DacpacTask'
+    DeploymentAction: 'Extract'
+    IpDetectionMethod: 'AutoDetect'
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
